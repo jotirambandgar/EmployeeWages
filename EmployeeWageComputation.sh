@@ -1,10 +1,13 @@
 #!/bin/bash -x
 	echo "Welcome to Employee Wage computation"
-	tempRandom=$(( RANDOM%2 ))
-	if [ $tempRandom -eq 1 ]
+	TEMP_RANDOM=$(( RANDOM%2 ))
+	FULLDAY_WORKING_HOURS=8
+	HALFDAY_WORKING_HOURS=4
+	WAGES=20
+	if [ $TEMP_RANDOM -eq 1 ]
 		then
 			echo "employee present"
-			dailyWage=$(( 8*20 ))
+			dailyWage=$(( $FULLDAY_WORKING_HOURS * $WAGES ))
 	else
 			echo "employee absent"
 	fi
