@@ -10,6 +10,17 @@
 	counter=0;
 	DAY=0
 	HOURS=100
+function getWorkingHrs(){
+ timeStatus=$(( RANDOM%2 ))
+         case $timeStatus in
+                  $FULL_DAY )
+                           echo $FULLDAY_WORKING_HOURS 
+                                                   ;;
+                  $PART_TIME )
+                            echo $HALFDAY_WORKING_HOURS 
+                           ;;
+			esac
+}
 	while [[ $WORKING_MONTH_DAY -ne 0 && $HOURS -gt 0 ]] 
 	do
 	tempRandom=$(( RANDOM%2 ))
@@ -17,17 +28,9 @@
 	if [ $tempRandom -eq 1 ]
 		then
 			echo "employee present"
-			timeStatus=$(( RANDOM%2 ))
-			case $timeStatus in
-						$FULL_DAY )
-									hour=$FULLDAY_WORKING_HOURS 
-																	;;
-						$PART_TIME )
-									 hour=$HALFDAY_WORKING_HOURS 
-									;;
-			esac
-							 dailyWage=$(( $hour * $WAGES ))
-							 HOURS=$(( $HOURS - $hour))
+			hour=$(getWorkingHrs)
+			dailyWage=$(( $hour * $WAGES ))
+	      HOURS=$(( $HOURS - $hour))
 	else
 			dailyWage=0
 			echo "employee absent"
