@@ -1,4 +1,4 @@
-#!/bin/bash -x
+ #!/bin/bash -x
 	echo "Welcome to Employee Wage computation"
 	#xTEMP_RANDOM=$(( RANDOM%2 ))
 	FULLDAY_WORKING_HOURS=8
@@ -8,7 +8,9 @@
 	PART_TIME=0
 	WORKING_MONTH_DAY=20
 	counter=0;
-	for(( i=0 ; i<20 ;i++)) 
+	DAY=0
+	HOURS=100
+	while [[ $WORKING_MONTH_DAY -ne 0 && $HOURS -gt 0 ]] 
 	do
 	tempRandom=$(( RANDOM%2 ))
 
@@ -18,17 +20,20 @@
 			timeStatus=$(( RANDOM%2 ))
 			case $timeStatus in
 						$FULL_DAY )
-									dailyWage=$(( $FULLDAY_WORKING_HOURS * $WAGES ))
-									;;
+									hour=$FULLDAY_WORKING_HOURS 
+																	;;
 						$PART_TIME )
-									 dailyWage=$(( $HALFDAY_WORKING_HOURS * $WAGES ))
+									 hour=$HALFDAY_WORKING_HOURS 
 									;;
 			esac
+							 dailyWage=$(( $hour * $WAGES ))
+							 HOURS=$(( $HOURS - $hour))
 	else
 			dailyWage=0
 			echo "employee absent"
 	fi
-			echo "wage of day $i = $dailyWage "
-			echo "$dailyWage"
-			monthlyWage=$(( $dailyWage * $WORKING_MONTH_DAY ))
+			DAY=$(( $DAY + 1 ))
+			echo "wage of day $DAY = $dailyWage "
+			echo "$HOURS"
+			WORKING_MONTH_DAY=$(( $WORKING_MONTH_DAY - 1 )) 
 	done
