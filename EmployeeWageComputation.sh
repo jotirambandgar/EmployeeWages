@@ -10,6 +10,8 @@
 	counter=0;
 	DAY=0
 	HOURS=100
+	COUNTER=0
+	TOTAL_WAGE=0
 function getWorkingHrs(){
  timeStatus=$(( RANDOM%2 ))
          case $timeStatus in
@@ -38,5 +40,11 @@ function getWorkingHrs(){
 			DAY=$(( $DAY + 1 ))
 			echo "wage of day $DAY = $dailyWage "
 			echo "$HOURS"
-			WORKING_MONTH_DAY=$(( $WORKING_MONTH_DAY - 1 )) 
+			WORKING_MONTH_DAY=$(( $WORKING_MONTH_DAY - 1 ))
+			dailyWages[(COUNTER++)]=$dailyWage
+			echo "counter--->$COUNTER"
+			TOTAL_WAGE=$(( $TOTAL_WAGE + $dailyWage ))
+			totalWage[($COUNTER)]=$TOTAL_WAGE
 	done
+	echo "${totalWage[@]} total"
+	echo "${dailyWages[@]} daily"
