@@ -1,17 +1,17 @@
  #!/bin/bash -x
-	echo "Welcome to Employee Wage computation"
-	FULLDAY_WORKING_HOURS=8
-	HALFDAY_WORKING_HOURS=4
-	WAGES=20
-	FULL_DAY=1
-	PART_TIME=0
-	WORKING_MONTH_DAY=20
+echo "Welcome to Employee Wage computation"
+FULLDAY_WORKING_HOURS=8
+HALFDAY_WORKING_HOURS=4
+WAGES=20
+FULL_DAY=1
+PART_TIME=0
+WORKING_MONTH_DAY=20
 
-	counter=0;
-	day=0
-	workingHours=100
-	totalWage=0
-	declare -A monthlyWage;
+counter=0;
+day=0
+workingHours=100
+totalWage=0
+declare -A monthlyWage;
 
 function getWorkingHrs(){
  	timeStatus=$(( RANDOM%2 ))
