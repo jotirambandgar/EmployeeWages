@@ -13,21 +13,21 @@
 	totalWage=0
 	declare -A monthlyWage;
 
-	function getWorkingHrs(){
- 		timeStatus=$(( RANDOM%2 ))
-         case $timeStatus in
-                  $FULL_DAY )
-                           echo $FULLDAY_WORKING_HOURS 
-                                                   ;;
-                  $PART_TIME )
-                            echo $HALFDAY_WORKING_HOURS 
-                           ;;
-			esac
-	}
+function getWorkingHrs(){
+ 	timeStatus=$(( RANDOM%2 ))
+   case $timeStatus in
+	 $FULL_DAY )
+			echo $FULLDAY_WORKING_HOURS 
+            ;;
+    $PART_TIME )
+         echo $HALFDAY_WORKING_HOURS 
+            ;;
+	esac
+}
 
-	while [[ $WORKING_MONTH_DAY -ne 0 && $workingHours -gt 0 ]] 
-	do
-		tempRandom=$(( RANDOM%2 ))
+while [[ $WORKING_MONTH_DAY -ne 0 && $workingHours -gt 0 ]] 
+do
+	tempRandom=$(( RANDOM%2 ))
 
 	if [ $tempRandom -eq 1 ]
 		then
@@ -48,4 +48,4 @@
 			dailyTotalWage="$dailyWage  $totalWage"
 			monthlyWage[$dayKey]=$dailyTotalWage
 	done
-	echo "${monthlyWage[DAY 1]}"
+echo "${monthlyWage[DAY 1]}"
