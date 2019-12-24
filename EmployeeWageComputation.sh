@@ -14,13 +14,13 @@ totalWage=0
 declare -A monthlyWage;
 
 function getWorkingHrs(){
- 	timeStatus=$(( RANDOM%2 ))
-   case $timeStatus in
-	 $FULL_DAY )
-			echo $FULLDAY_WORKING_HOURS 
+	timeStatus=$(( RANDOM%2 ))
+	case $timeStatus in
+	$FULL_DAY )
+		echo $FULLDAY_WORKING_HOURS 
             ;;
-    $PART_TIME )
-         echo $HALFDAY_WORKING_HOURS 
+	$PART_TIME )
+		echo $HALFDAY_WORKING_HOURS 
             ;;
 	esac
 }
@@ -34,7 +34,7 @@ do
 			echo "employee present"
 			hour=$(getWorkingHrs)
 			dailyWage=$(( $hour * $WAGES ))
-	      workingHours=$(( $workingHours - $hour))
+			workingHours=$(( $workingHours - $hour))
 	else
 			dailyWage=0
 			echo "employee absent"
